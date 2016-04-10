@@ -6,6 +6,7 @@ alias np='node ~/nplogger.js'
 alias hm='node ~/hmlogger.js'
 alias tc='tmux show-buffer | pbcopy'
 alias sg='export GOPATH=$(pwd); export PATH=$PATH:$(pwd)/bin'
+alias ls='ls -a'
 
 NO_COLOR="\[\033[0m\]"
 GREY="\[\033[240m\]"
