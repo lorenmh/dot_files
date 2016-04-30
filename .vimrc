@@ -7,7 +7,7 @@ set backspace=2
 set colorcolumn=80
 
 set nu
-set expandtab
+"set expandtab
 set mouse=a
 set showcmd
 set showmode
@@ -16,6 +16,7 @@ set hls
 set ignorecase
 set smartcase
 set list
+set listchars=tab:··,eol:$
 
 set foldmethod=syntax
 set nofoldenable

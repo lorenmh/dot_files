@@ -5,8 +5,22 @@ alias hs='node ~/hslogger.js'
 alias np='node ~/nplogger.js'
 alias hm='node ~/hmlogger.js'
 alias tc='tmux show-buffer | pbcopy'
-alias sg='export GOPATH=$(pwd); export PATH=$PATH:$(pwd)/bin'
+alias sg='export GOPATH=$PWD; export PATH=$PATH:$GOPATH/bin'
 alias ls='ls -a'
+
+colorized_grep() {
+  grep --color -E $@
+}
+
+alias grep=colorized_grep
+
+CHROME_PATH='/Applications/Google\ Chrome.app/'
+
+chromeopen() {
+  bash -c "open -a $CHROME_PATH $1"
+}
+
+alias co=chromeopen
 
 NO_COLOR="\[\033[0m\]"
 GREY="\[\033[240m\]"
