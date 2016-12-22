@@ -1,13 +1,14 @@
-filetype plugin indent on
 syntax on
 
 set shiftwidth=2
 set tabstop=2
 set backspace=2
+set softtabstop=2
 set colorcolumn=80
+"set textwidth=80
 
 set nu
-"set expandtab
+set expandtab
 set mouse=a
 set showcmd
 set showmode
@@ -51,16 +52,18 @@ colorscheme jellybeans
 
 "let g:jellybeans_use_lowcolor_black = 0
 
-"let g:syntastic_javascript_checkers = ['jsxhint']
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['jsxhint']
+"let g:syntastic_javascript_checkers = ['jshint']
 
 let g:syntastic_html_checkers = ['']
+
+let g:syntastic_c_compiler_options = ' -Wno-deprecated'
 
 let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
-let NERDTreeIgnore = ['\.pyc$', '\.swo', '\.swp']
+let NERDTreeIgnore = ['\.pyc$', '\.swo', '\.swp', '\.o']
 let NERDTreeShowHidden=1
 
 if exists('$TMUX')
@@ -72,3 +75,4 @@ else
 endif
 
 execute pathogen#infect()
+filetype plugin indent on

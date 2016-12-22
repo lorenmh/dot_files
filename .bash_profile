@@ -1,3 +1,5 @@
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+
 alias st='open -a "Sublime Text"'
 alias br='git rev-parse --abbrev-ref HEAD'
 alias si='eval $(docker-machine env vbox)'
@@ -7,12 +9,32 @@ alias hm='node ~/hmlogger.js'
 alias tc='tmux show-buffer | pbcopy'
 alias sg='export GOPATH=$PWD; export PATH=$PATH:$GOPATH/bin'
 alias ls='ls -a'
+alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
+alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
+alias dup='docker-compose up'
+alias dkill='docker-compose kill'
+alias clvi="find . -name '"'*.sw[op]'"' -delete"
+alias clpy="find . -name '"'*.pyc'"' -delete"
 
 colorized_grep() {
-  grep --color -E $@
+  grep --color -E "$@"
 }
 
 alias grep=colorized_grep
+
+colorized_man() {
+    env \
+        LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+        LESS_TERMCAP_md=$(printf "\e[1;31m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[1;32m") \
+            man "$@"
+}
+
+alias man=colorized_man
 
 CHROME_PATH='/Applications/Google\ Chrome.app/'
 
