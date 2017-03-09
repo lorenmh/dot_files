@@ -19,8 +19,28 @@ alias clpy="find . -name '"'*.pyc'"' -delete"
 colorized_grep() {
   grep --color -E "$@"
 }
-
 alias grep=colorized_grep
+
+findin() {
+  usage='findin <dir> <regex-string>'
+  if [[ -z "$1" ]] || [[ -z "$2" ]]
+  then
+    echo $usage
+  fi
+  find "$1" ! -name '*.pyc' -type f -exec egrep "$2" {} \;
+}
+alias findin=findin
+
+replin() {
+  usage='replin <dir> <sed-string>'
+  if [[ -z "$1" ]] || [[ -z "$2" ]]
+  then
+    echo $usage
+  fi
+  find "$1" ! -name '*.pyc' -type f -exec sed -i '' -e "$2" {} \;
+}
+alias findin=findin
+
 
 colorized_man() {
     env \
