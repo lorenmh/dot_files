@@ -26,8 +26,9 @@ findin() {
   if [[ -z "$1" ]] || [[ -z "$2" ]]
   then
     echo $usage
+    exit 1
   fi
-  find "$1" ! -name '*.pyc' -type f -exec egrep "$2" {} \;
+  find "$1" ! -name '*.pyc' -type f -exec egrep -Hn --color -E "$2" {} \;
 }
 alias findin=findin
 
@@ -36,10 +37,11 @@ replin() {
   if [[ -z "$1" ]] || [[ -z "$2" ]]
   then
     echo $usage
+    exit 1
   fi
   find "$1" ! -name '*.pyc' -type f -exec sed -i '' -e "$2" {} \;
 }
-alias findin=findin
+alias replin=replin
 
 
 colorized_man() {
