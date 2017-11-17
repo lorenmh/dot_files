@@ -22,17 +22,19 @@ set listchars=tab:··,eol:$
 set foldmethod=syntax
 set nofoldenable
 autocmd Syntax * normal zR
+autocmd BufNewFile,BufRead *.h setfiletype c
 
 "let g:python_version_2 = 1
 
 " Clears highlights (Ctrl + L)
 nnoremap <silent> <C-l> :nohl<CR><C-l>
+set pastetoggle=<F10>
 set t_Co=256
 
 set laststatus=2
 
 "let g:airline#extensions#tabline#enabled = 1
-let g:jellybeans_use_lowcolor_black = 0
+"let g:jellybeans_use_lowcolor_black = 0
 "let g:jellybeans_background_color_256='231'
 
 let g:airline#extensions#tabline#left_sep = ''
@@ -46,14 +48,22 @@ let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 
-"colorscheme Tomorrow-Night-Eighties
-colorscheme jellybeans
+colorscheme lorens
+"colorscheme Tomorrow-Night
+"colorscheme jellybeans
+"colorscheme jellyx
+"colorscheme spacegray
 "colorscheme seoul256-light
 
 "let g:jellybeans_use_lowcolor_black = 0
 
-let g:syntastic_javascript_checkers = ['jsxhint']
+let g:syntastic_javascript_checkers = ['eslint']
+"let g:syntastic_javascript_checkers = ['jsxhint']
 "let g:syntastic_javascript_checkers = ['jshint']
+
+"let g:syntastic_python_python_exec = '/usr/local/bin/python3'
+let g:syntastic_python_python_exec = '/usr/local/bin/python2'
+let g:syntastic_python_checkers = ['flake8']
 
 let g:syntastic_html_checkers = ['']
 
@@ -63,7 +73,7 @@ let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
-let NERDTreeIgnore = ['\.pyc$', '\.swo', '\.swp', '\.o']
+let NERDTreeIgnore = ['\.pyc$', '\.swo$', '\.swp$', '\.o$']
 let NERDTreeShowHidden=1
 
 if exists('$TMUX')

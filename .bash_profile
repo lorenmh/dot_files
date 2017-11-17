@@ -1,4 +1,19 @@
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=$PATH:/usr/local/bin:/usr/local/sbin:/Users/loren/.cargo/bin
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig/
+
+export EDITOR=vim
+
+#export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages
+
+alias gp='git push origin HEAD'
+
+function gcmp() {
+  git commit -m $@
+  git push origin HEAD
+}
+
+alias py3='ipython3'
+alias py='ipython2'
 
 alias st='open -a "Sublime Text"'
 alias br='git rev-parse --abbrev-ref HEAD'
@@ -8,6 +23,7 @@ alias np='node ~/nplogger.js'
 alias hm='node ~/hmlogger.js'
 alias tc='tmux show-buffer | pbcopy'
 alias sg='export GOPATH=$PWD; export PATH=$PATH:$GOPATH/bin'
+#alias ls='ls -a'
 alias la='ls -a'
 alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
 alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
@@ -16,10 +32,11 @@ alias dkill='docker-compose kill'
 alias clvi="find . -name '"'*.sw[op]'"' -delete"
 alias clpy="find . -name '"'*.pyc'"' -delete"
 
+alias ti="/Users/loren/scripts/tmux-start.sh"
+
 colorized_grep() {
   grep --color -E "$@"
 }
-alias grep=colorized_grep
 
 findin() {
   usage='findin <dir> <regex-string>'
@@ -43,6 +60,7 @@ replin() {
 }
 alias replin=replin
 
+alias grep=colorized_grep
 
 colorized_man() {
     env \
@@ -94,6 +112,11 @@ export CLICOLOR=1
 ##
 
 # MacPorts Installer addition on 2015-07-27_at_13:00:15: adding an appropriate PATH variable for use with MacPorts.
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+
+# MacPorts Installer addition on 2016-12-30_at_23:24:33: adding an appropriate PATH variable for use with MacPorts.
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # Finished adapting your PATH environment variable for use with MacPorts.
 
