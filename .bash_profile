@@ -38,12 +38,14 @@ colorized_grep() {
   grep --color -E "$@"
 }
 
+alias grep=colorized_grep
+
 findin() {
   usage='findin <dir> <regex-string>'
   if [[ -z "$1" ]] || [[ -z "$2" ]]
   then
     echo $usage
-    exit 1
+    return 1
   fi
   find "$1" ! -name '*.pyc' -type f -exec egrep -Hn --color -E "$2" {} \;
 }
@@ -54,13 +56,11 @@ replin() {
   if [[ -z "$1" ]] || [[ -z "$2" ]]
   then
     echo $usage
-    exit 1
+    return 1
   fi
-  find "$1" ! -name '*.pyc' -type f -exec sed -i '' -e "$2" {} \;
+  LANG=C find "$1" ! -name '*.pyc' -type f -exec sed -i '' -e "$2" {} \;
 }
 alias replin=replin
-
-alias grep=colorized_grep
 
 colorized_man() {
     env \
@@ -85,7 +85,8 @@ chromeopen() {
 alias co=chromeopen
 
 NO_COLOR="\[\033[0m\]"
-GREY="\[\033[240m\]"
+GRAY="\[\033[240m\]"
+GRAY2="\[\033[30m\]"
 RED="\[\033[91m\]"
 YELLOW="\[\033[93m\]"
 GREEN="\[\033[92m\]"
@@ -97,15 +98,16 @@ C1=$YELLOW
 C2=$GREEN
 C3=$RED
 C4=$RED
+C5=$GRAY2
 
 #export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 #export PROMPT_COMMAND='pwd2=$(sed "s:\([^/]\)[^/]*/:\1/:g" <<< ${PWD/#$HOME/\~})'
 PROMPT_COMMAND='PS1_PATH=$(sed "s:\([^/\.]\)[^/]*/:\1/:g" <<< ${PWD/#$HOME/\~})'
-export PS1="$C1\u$C4:$C2"'$PS1_PATH'"$C3\$$NO_COLOR "
+export PS1="$C5\h$C4:$C1\u$C4:$C2"'$PS1_PATH'"$C3\$$NO_COLOR "
 #export PS1="\[\033[92m\]\u\[\033[m\]:\[\033[94m\]$()\[\033[m\]\$ "
 export PATH=$PATH:~/bin
 export CLICOLOR=1
-#export TERM=screen-256color
+export TERM=xterm-256color
 
 ##
 # Your previous /Users/loren/.bash_profile file was backed up as /Users/loren/.bash_profile.macports-saved_2015-07-27_at_13:00:15
