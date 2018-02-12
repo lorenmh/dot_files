@@ -83,4 +83,5 @@ colorscheme jellybeans
 highlight LineNr ctermbg=NONE
 highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE
+highlight SpecialKey ctermbg=NONE
 highlight ColorColumn ctermbg=240
