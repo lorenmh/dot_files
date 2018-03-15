@@ -3,9 +3,9 @@ syntax on
 set expandtab
 set shiftwidth=2
 set tabstop=2
-set backspace=2
+set backspace=indent,eol,start
 set softtabstop=2
-
+set updatetime=100
 set colorcolumn=80
 set showcmd
 set showmode
@@ -27,7 +27,11 @@ autocmd Syntax * normal zR
 autocmd BufNewFile,BufRead *.h setfiletype c
 
 " Clears highlights (Ctrl + L)
-nnoremap <silent> <C-l> :nohl<CR><C-l>
+nnoremap <silent> <C-c> :nohl<CR><C-l>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 set pastetoggle=<F10>
 
 "set t_Co=256
@@ -46,12 +50,8 @@ let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 
 let g:syntastic_javascript_checkers = ['eslint']
-"let g:syntastic_javascript_checkers = ['jsxhint']
-"let g:syntastic_javascript_checkers = ['jshint']
-
-"let g:syntastic_python_python_exec = '/usr/local/bin/python3'
-let g:syntastic_python_python_exec = '/usr/local/bin/python2'
 let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_args = '--format=default'
 
 let g:syntastic_html_checkers = ['']
 
